@@ -1,0 +1,35 @@
+1. Search - Placeholder - DONE
+
+
+2. Sorting - Name & Date - DONE 
+
+3. Search Bar left side - DONE
+
+4. Pagination w/ numbers - NOT YET
+
+5. Status -DONE
+   If Active - Green 
+   Else Inactive - Red
+
+6. Icon Header for Sorting
+   Indicator if Asc or Desc - NOT YET
+
+
+7. Document Table change to Document List - DONE
+
+8. Update display ID - DONE
+
+9. Pagination:
+  Last & First page - DONE
+
+10. Delete error - DONE
+
+11. margin-left side same to right - DONE
+
+12. Responsive - DONE
+
+13. Menus connect to admin menu - DONE
+
+14. Maintenance arrow up when show -Not yet
+
+15. ROW ID -DONE

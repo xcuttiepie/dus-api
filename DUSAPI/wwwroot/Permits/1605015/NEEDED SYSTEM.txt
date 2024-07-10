@@ -1,0 +1,52 @@
+await in multiple upload
+
+
+generated id core 6
+
+sql
+scope_identity
+
+--------------------
+Username&Email can use to login
+usertable
+1. ID PK int autoincrement not null
+2. Username varchar(55) null
+3. Password varchar55 null
+4. Email varchar55 null
+5. Lastname varchar55 null
+6. Firstname varchar55 null
+7. Middlename varchar55 null
+8. Contact number varchar13 null
+9. Address varchar255 null
+10. Status datatype = char(1) default value = A
+11. isDelete dataype = tinyint default value = 0
+12. CreatedBy int null
+13. CreatedDate datetime defaultvalue = getdate() not null
+14. ModifiedBy int null
+15. ModifiedDate datetime null
+16. UserType varchar55 null
+17. AccountType varchar55 null
+-----------------------
+Branchtable
+
+1.Branchcode
+2.Branchname
+3.BranchAddress
+10. Status
+11. isDelete dataype = tinyint
+12. CreatedBy
+13. CreatedDate
+14. ModifiedBy
+15. ModifiedDate
+--------------------------------
+Document table
+
+1. Id
+2. Name
+10. Status datatype = char(1) default value = A
+11. isDelete dataype = tinyint
+12. CreatedBy
+13. CreatedDate
+14. ModifiedBy
+15. ModifiedDate
+

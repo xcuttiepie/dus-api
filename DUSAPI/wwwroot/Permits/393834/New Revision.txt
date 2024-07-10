@@ -1,0 +1,12 @@
+Pagination w/ box - done
+Menu - not yet
+spinner table list - not yet
+Change Password - done
+Footer - done
+
+
+
+
+
+
+

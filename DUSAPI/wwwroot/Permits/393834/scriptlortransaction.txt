@@ -1,0 +1,16 @@
+  Create view lor_vTransaction
+  as
+  SELECT Id,
+		(SELECT Name
+		FROM lor_documenttype
+		WHERE (Id = l.documenttypeId)) AS DocumentName, Remarks , AcquiredDate, ExpiryDate,Status,Isdelete,
+        (SELECT employeename2
+         FROM  dbo.core_vUsers
+         WHERE   (userId = l.CreatedBy)) AS CreatedBy, CreatedDate,
+        (SELECT employeename2
+         FROM  dbo.core_vUsers
+         WHERE   (userId = l.ModifiedBy)) AS ModifiedBy, ModifiedDate,
+		(SELECT SiteName
+		 FROM core_vSiteInfo
+		 WHERE (SiteCode = l.brancode)) AS BranchName 
+FROM lor_transaction AS l

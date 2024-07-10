@@ -1,0 +1,91 @@
+et formData = new FormData()
+			formData.append('file', this.file);
+			if(this.datetime == "" || this.status == "" || this.type == "" || this.remarks  == ""){
+				
+			} 
+            else {
+				sessionStorage.DateTime = this.datetime
+            	sessionStorage.Status = this.status
+            	sessionStorage.Type = this.type
+            	sessionStorage.Remarks = this.remarks
+                sessionStorage.UnitID = this.unitid
+                sessionStorage.Week = this.week
+                sessionStorage.ProblemsDescription = this.problemsdescription
+                sessionStorage.NumberOfDays = this.numofdays
+
+                if(!this.files){
+                    alert("Please attach a file")
+                }
+                else{
+                    try {
+                        let user = sessionStorage.email;
+                        let formData = new FormData();
+                        for (var i = 0; i < this.files.length; i++){
+                            let file = this.files[i];
+                            var filename = file.name
+                            formData.append('namefile', filename)
+                            formData.append('fileInput', file);
+                            formData.append('user', user)
+                            
+                            
+                            sessionStorage.UniqueFileName = filename
+                            console.log(filename)
+                            axios.post('https://localhost:7022/UserAndAttachment', 
+                            {
+                                createdBy: sessionStorage.email,
+                                attachments: sessionStorage.UniqueFileName,
+                            }
+                            )
+                            .then(function() {
+                                console.log('AttachmentFileName Uploaded!')
+                                router.push('/Dashboard')
+                            })
+                            .catch(function(f){
+                                console.log(f)
+                            });
+                        }
+                    console.log(formData)
+                    
+                    let config = {
+                        headers : {
+                            'Content-Type' : 'multipart/form-data'
+                        }
+                    }
+                    axios.post('https://localhost:7022/UploadMultipleAttachments',
+                    formData, config
+                    ).then(function(){
+                    console.log('SUCCESS!!');
+                    })
+                    .catch(function(e){
+                    console.log(e);
+                    });
+
+                    axios.post('https://localhost:7022/MHEMainData', 
+                    //axios.post('https://localhost:7022/UploadAttachmentFileName2', 
+                    {
+                        week: sessionStorage.Week,
+                        unitID: sessionStorage.UnitID,
+                        type: sessionStorage.Type,
+                        status: sessionStorage.Status,
+                        remarks: sessionStorage.Remarks,
+                        problemsDescription: sessionStorage.ProblemsDescription,
+                        numberOfDays: sessionStorage.NumberOfDays,
+                        dateTimeOfDownTime: sessionStorage.DateTime,
+                        createdBy: sessionStorage.storeData,
+                        attachments: sessionStorage.UniqueFileName,
+                    }
+                    )
+                    .then(function() {
+                        console.log('AttachmentFileName Uploaded!')
+                        router.push('/Transaction_DowntimeEntry')
+                    })
+                    .catch(function(f){
+                        console.log(f)
+                    });
+                    
+                } catch (error) {
+                    console.log(error)
+                }
+                }
+			}
+		},
